@@ -10,26 +10,32 @@ except ImportError:
         sys.path.append("/Applications/Binary Ninja.app/Contents/Resources/python")
         from binaryninja import *
 
+
+#The ones that are truly alone need to be removed from braces. 
 InstructionNames = [
     #000...
 	[],
     #0100
-    [],
+    ["EXIT"], #also illegal and friends. 
     #0101
-    [],
+    ["ADDQ"], #0101=ADDQ, need to double check the encoding.
+    #0110, 
+    ["BCC"], 
     #0111,
-    [],
+    ["MOVQ"], #MOVQ and friends 
     #1000,
-    [],
+    ["OR"], #OR, SDBC and more!!!!
     #1001,
-    [],
+    ["SUB"], #Lots of friends 
     #1011,
-    [],
+    ["CMP"], #we need to account for variations and CMPA/CMPM. Actually this one shares lots.
     #1100
-    [],
+    ["AND"], #1100=AND, there are several variations to parse. 
     #1101
-    [],
-    #No 1111
+    ["ADD"], #1101=ADD, there are several variations to parse. ADDX is here as well. 
+    #1110
+    ["ASL"] #Multiple varients 
+    #No 1111 
 ]
 
 InstructionOperandTypes = [
